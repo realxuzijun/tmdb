@@ -64,7 +64,8 @@ public interface parseConstants {
   int SET = 30;
   /** RegularExpression Id. */
   int UNION = 31;
-
+  /** RegularExpression Id. */
+  int TRA = 32;
   /** Lexical state. */
   int DEFAULT = 0;
 
@@ -102,6 +103,7 @@ public interface parseConstants {
     "\"UPDATE\"",
     "\"SET\"",
     "\"UNION\"",
+    "<TRA>"
   };
 
 }

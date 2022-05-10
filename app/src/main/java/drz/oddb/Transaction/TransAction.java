@@ -19,6 +19,7 @@ import drz.oddb.show.ShowTable;
 import drz.oddb.Transaction.SystemTable.*;
 
 import drz.oddb.parse.*;
+import drz.oddb.echart;
 
 public class TransAction {
     public TransAction(Context context) {
@@ -99,7 +100,15 @@ public class TransAction {
         }
         return true;
     }
+    private void Printechart(int[] id) {
+        Intent intent = new Intent(context, echart.class);
+        //System.out.println("PrintSelectResult");
 
+        Bundle bundle = new Bundle();
+        bundle.putIntArray("id", id);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
     public String query(String s) {
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(s.getBytes());
@@ -109,9 +118,11 @@ public class TransAction {
 
             switch (Integer.parseInt(aa[0])) {
                 case parse.OPT_CREATE_ORIGINCLASS:
-                    log.WriteLog(s);
-                    CreateOriginClass(aa);
-                    new AlertDialog.Builder(context).setTitle("提示").setMessage("创建成功").setPositiveButton("确定",null).show();
+                    int id []= {1,1,1,1};
+                    Printechart(id);
+                    //log.WriteLog(s);
+                    //CreateOriginClass(aa);
+                    //new AlertDialog.Builder(context).setTitle("提示").setMessage("创建成功").setPositiveButton("确定",null).show();
                     break;
                 case parse.OPT_CREATE_SELECTDEPUTY:
                     log.WriteLog(s);
@@ -1224,4 +1235,3 @@ public class TransAction {
         PrintTab(topt,switchingT,deputyt,biPointerT,classt);
     }
 }
-
